@@ -134,6 +134,3 @@ class DadataSuggestions extends HTMLElement {
   }
   
   customElements.define("dadata-suggestions", DadataSuggestions);
-  
-  // использование:
-  // <dadata-suggestions></dadata-suggestions>
