@@ -12,7 +12,6 @@ let shortName = document.createElement('input');
 let fullName = document.createElement('input');
 let innKpp = document.createElement('input');
 let fullAddress = document.createElement('input');
-let orgType = '';
 
 list.classList.add('list')
 input.classList.add('label');
@@ -29,6 +28,7 @@ shortNameLabel.innerHTML = 'Краткое наименование';
 fullNameLabel.innerHTML = 'Полное наименование';
 innKppLabel.innerHTML = 'ИНН / КПП';
 fullAddressLabel.innerHTML = 'Адрес';
+
 input.addEventListener('input', () => {
     list.replaceChildren();
     let url = "https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/party";
@@ -56,7 +56,7 @@ input.addEventListener('input', () => {
                 const data = obj.data;
                 const name = obj.value;
                 const fullNameWithOpf = data.name.full_with_opf;
-                const address = data.address.value;
+                const address = data.address.unrestricted_value;
                 const inn = data.inn;
                 const kpp = data.kpp;
                 const stringInSearch = document.createElement('li');
@@ -79,6 +79,7 @@ input.addEventListener('input', () => {
         })
         .catch(error => console.log("error", error))
 })
+
 inputLabel.append(input);
 inputLabel.append(list);
 inputLabel.append(type);
@@ -92,10 +93,6 @@ form.append(fullNameLabel);
 form.append(innKppLabel);
 form.append(fullAddressLabel);
 root.append(form);
-
-const objRender = (obj) => {
-
-}
 
 
 
